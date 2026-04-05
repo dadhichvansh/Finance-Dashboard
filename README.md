@@ -207,6 +207,12 @@ pnpm run db:migrate
 pnpm dev
 ```
 
+### 🐳 Run with Docker
+
+```bash
+docker-compose up --build
+```
+
 ---
 
 ## 🧠 Design Decisions

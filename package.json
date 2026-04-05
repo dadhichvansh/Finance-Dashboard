@@ -5,6 +5,7 @@
   "main": "server.js",
   "scripts": {
     "dev": "tsx watch server.ts",
+    "start": "tsx server.js",
     "db:migrate": "pnpm dlx prisma migrate dev init",
     "db:generate": "pnpm dlx prisma generate",
     "db:studio": "pnpm dlx prisma studio",
