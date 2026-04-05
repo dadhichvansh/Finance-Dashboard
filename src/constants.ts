@@ -1,10 +1,10 @@
 export const ROLES = {
-  VIEWER: 'viewer',
-  ANALYST: 'analyst',
-  ADMIN: 'admin',
+  ADMIN: 'ADMIN',
+  ANALYST: 'ANALYST',
+  VIEWER: 'VIEWER',
 } as const;
 
 export const STATUS = {
-  ACTIVE: 'active',
-  INACTIVE: 'inactive',
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
 } as const;
