@@ -8,7 +8,22 @@ import { ROLES } from '../../constants.js';
 
 const router = express.Router();
 
-// ADMIN + ANALYST can view dashboard
+/**
+ * @swagger
+ * tags:
+ *   name: Dashboard
+ *   description: Dashboard analytics APIs
+ */
+
+/**
+ * @swagger
+ * /dashboard/summary:
+ *   get:
+ *     summary: Get dashboard summary
+ *     tags: [Dashboard]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.get(
   '/summary',
   protect,

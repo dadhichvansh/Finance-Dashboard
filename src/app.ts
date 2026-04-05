@@ -1,6 +1,7 @@
 import 'dotenv/config';
 import express from 'express';
 import cors from 'cors';
+import swaggerUi from 'swagger-ui-express';
 
 import authRoutes from './modules/auth/auth.routes.js';
 import userRoutes from './modules/users/user.routes.js';
@@ -8,6 +9,8 @@ import financeRoutes from './modules/finance/finance.routes.js';
 import dashboardRoutes from './modules/dashboard/dashboard.routes.js';
 
 import { errorHandler } from './middleware/error.middleware.js';
+
+import { swaggerSpec } from './config/swagger.js';
 
 const app = express();
 
@@ -28,6 +31,8 @@ app.use('/api/v1/auth', authRoutes);
 app.use('/api/v1/users', userRoutes);
 app.use('/api/v1/finance', financeRoutes);
 app.use('/api/v1/dashboard', dashboardRoutes);
+
+app.use('/api/v1/docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 // Global error handler
 app.use(errorHandler);

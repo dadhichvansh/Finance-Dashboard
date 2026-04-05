@@ -18,7 +18,22 @@ import {
 
 const router = express.Router();
 
-// Only ADMIN can create transactions
+/**
+ * @swagger
+ * tags:
+ *   name: Transactions
+ *   description: Financial transaction APIs
+ */
+
+/**
+ * @swagger
+ * /transactions:
+ *   post:
+ *     summary: Create transaction
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.post(
   '/transactions',
   protect,
@@ -27,7 +42,15 @@ router.post(
   addTransaction,
 );
 
-// ADMIN + ANALYST can view
+/**
+ * @swagger
+ * /transactions:
+ *   get:
+ *     summary: Get transactions (with filters)
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.get(
   '/transactions',
   protect,
@@ -35,7 +58,15 @@ router.get(
   fetchTransactions,
 );
 
-// Update (only ADMIN)
+/**
+ * @swagger
+ * /transactions/{id}:
+ *   patch:
+ *     summary: Update transaction
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.patch(
   '/transactions/:id',
   protect,
@@ -44,7 +75,15 @@ router.patch(
   editTransaction,
 );
 
-// Delete (only ADMIN)
+/**
+ * @swagger
+ * /transactions/{id}:
+ *   delete:
+ *     summary: Delete transaction
+ *     tags: [Transactions]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.delete(
   '/transactions/:id',
   protect,

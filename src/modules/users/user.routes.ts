@@ -21,10 +21,36 @@ import {
 
 const router = express.Router();
 
-// Only ADMIN can view all users
+/**
+ * @swagger
+ * tags:
+ *   name: Users
+ *   description: User management APIs
+ */
+
+/**
+ * @swagger
+ * /users:
+ *   get:
+ *     summary: Get all users
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       200:
+ *         description: Users fetched
+ */
 router.get('/', protect, authorize(ROLES.ADMIN), getUsers);
 
-// Update role (ADMIN only, cannot change own role)
+/**
+ * @swagger
+ * /users/{id}/role:
+ *   patch:
+ *     summary: Update user role
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.patch(
   '/:id/role',
   protect,
@@ -33,7 +59,15 @@ router.patch(
   changeUserRole,
 );
 
-// Update status (ADMIN only, cannot change own role)
+/**
+ * @swagger
+ * /users/{id}/status:
+ *   patch:
+ *     summary: Update user status
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.patch(
   '/:id/status',
   protect,
@@ -42,7 +76,18 @@ router.patch(
   changeUserStatus,
 );
 
-// Create user (ADMIN only)
+/**
+ * @swagger
+ * /users:
+ *   post:
+ *     summary: Create user (Admin)
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ *     responses:
+ *       201:
+ *         description: User created
+ */
 router.post(
   '/',
   protect,
@@ -51,7 +96,15 @@ router.post(
   createUser,
 );
 
-// Get user by ID (ADMIN only)
+/**
+ * @swagger
+ * /users/{id}:
+ *   get:
+ *     summary: Get single user
+ *     tags: [Users]
+ *     security:
+ *       - bearerAuth: []
+ */
 router.get('/:id', protect, authorize(ROLES.ADMIN), getUser);
 
 export default router;
