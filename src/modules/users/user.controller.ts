@@ -21,7 +21,7 @@ export const getUsers = asyncHandler(async (req: Request, res: Response) => {
   res.status(200).json(new ApiResponse('Users fetched successfully', users));
 });
 
-// PUT /api/v1/users/:id/role
+// PATCH /api/v1/users/:id/role
 export const changeUserRole = asyncHandler(
   async (req: AuthRequest, res: Response) => {
     const { role } = req.body;
@@ -37,7 +37,7 @@ export const changeUserRole = asyncHandler(
   },
 );
 
-// PUT /api/v1/users/:id/status
+// PATCH /api/v1/users/:id/status
 export const changeUserStatus = asyncHandler(
   async (req: AuthRequest, res: Response) => {
     const { status } = req.body;
