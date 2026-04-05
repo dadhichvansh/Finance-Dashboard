@@ -10,8 +10,14 @@ import {
 
 import { protect } from '../../middleware/auth.middleware.js';
 import { authorize } from '../../middleware/rbac.middleware.js';
+import { validate } from '../../middleware/validate.middleware.js';
 
 import { ROLES } from '../../constants.js';
+import {
+  createUserSchema,
+  updateUserRoleSchema,
+  updateUserStatusSchema,
+} from '../../utils/validators/user.validation.js';
 
 const router = express.Router();
 
@@ -19,13 +25,31 @@ const router = express.Router();
 router.get('/', protect, authorize(ROLES.ADMIN), getUsers);
 
 // Update role (ADMIN only, cannot change own role)
-router.patch('/:id/role', protect, authorize(ROLES.ADMIN), changeUserRole);
+router.patch(
+  '/:id/role',
+  protect,
+  authorize(ROLES.ADMIN),
+  validate(updateUserRoleSchema),
+  changeUserRole,
+);
 
 // Update status (ADMIN only, cannot change own role)
-router.patch('/:id/status', protect, authorize(ROLES.ADMIN), changeUserStatus);
+router.patch(
+  '/:id/status',
+  protect,
+  authorize(ROLES.ADMIN),
+  validate(updateUserStatusSchema),
+  changeUserStatus,
+);
 
 // Create user (ADMIN only)
-router.post('/', protect, authorize(ROLES.ADMIN), createUser);
+router.post(
+  '/',
+  protect,
+  authorize(ROLES.ADMIN),
+  validate(createUserSchema),
+  createUser,
+);
 
 // Get user by ID (ADMIN only)
 router.get('/:id', protect, authorize(ROLES.ADMIN), getUser);
