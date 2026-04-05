@@ -8,13 +8,24 @@ import {
 } from './finance.controller.js';
 import { protect } from '../../middleware/auth.middleware.js';
 import { authorize } from '../../middleware/rbac.middleware.js';
+import { validate } from '../../middleware/validate.middleware.js';
 
 import { ROLES } from '../../constants.js';
+import {
+  createTransactionSchema,
+  updateTransactionSchema,
+} from '../../utils/validators/finance.validation.js';
 
 const router = express.Router();
 
 // Only ADMIN can create transactions
-router.post('/transactions', protect, authorize(ROLES.ADMIN), addTransaction);
+router.post(
+  '/transactions',
+  protect,
+  authorize(ROLES.ADMIN),
+  validate(createTransactionSchema),
+  addTransaction,
+);
 
 // ADMIN + ANALYST can view
 router.get(
@@ -29,6 +40,7 @@ router.patch(
   '/transactions/:id',
   protect,
   authorize(ROLES.ADMIN),
+  validate(updateTransactionSchema),
   editTransaction,
 );
 
