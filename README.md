@@ -193,7 +193,7 @@ DATABASE_URL=your_postgres_url
 JWT_SECRET=your_secret
 ```
 
-* Refer to `.env.example` file for required variables.
+- Refer to `.env.example` file for required variables.
 
 ### 4. Run migrations
 
@@ -257,5 +257,18 @@ This backend demonstrates:
 - Scalable design patterns
 
 It fulfills all core requirements of the assignment while maintaining production-level coding practices.
+
+---
+
+## 📚 API Documentation
+
+This project includes interactive API documentation using Swagger UI.
+
+To access it locally:
+
+1. Start the server
+2. Open: http://localhost:5000/api/v1/docs
+
+The documentation allows testing all endpoints, including authenticated routes using JWT.
 
 ---
