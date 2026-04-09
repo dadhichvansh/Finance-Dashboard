@@ -2,7 +2,7 @@
 
 ## 📌 Overview
 
-This project is a backend system for a **Finance Dashboard application** built as part of a backend engineering assessment. It demonstrates clean API design, modular architecture, role-based access control, and efficient data processing.
+This project is a backend system for a **Finance Dashboard application**. It demonstrates clean API design, modular architecture, role-based access control, and efficient data processing.
 
 The system allows users to manage financial transactions, control access based on roles, and retrieve summarized analytics for dashboard visualization.
 
@@ -243,7 +243,7 @@ docker-compose up --build
 
 ## 📌 Notes
 
-This project focuses on **clarity, correctness, and maintainability** rather than unnecessary complexity, aligning with the requirements of the assignment.
+This project focuses on **clarity, correctness, and maintainability**, with a strong emphasis on scalable backend design and real-world use cases.
 
 ---
 
@@ -256,7 +256,7 @@ This backend demonstrates:
 - Efficient data handling
 - Scalable design patterns
 
-It fulfills all core requirements of the assignment while maintaining production-level coding practices.
+It is structured to be production-ready and easily extensible for future enhancements.
 
 ---
 
